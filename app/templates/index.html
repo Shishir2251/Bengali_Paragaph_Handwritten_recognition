@@ -1,62 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bangla Handwritten OCR</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Bangla OCR</title>
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>🇧🇩 Bangla Handwritten Text Recognition</h1>
-            <p>Upload an image with Bangla handwritten text</p>
-        </header>
+        <h1>🇧🇩 Bangla Handwritten OCR</h1>
+        <p>Upload handwritten Bangla text</p>
 
-        <div class="upload-section">
-            <div class="upload-box" id="uploadBox">
-                <input type="file" id="imageInput" accept="image/*" hidden>
-                <div class="upload-content">
-                    <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
-                    </svg>
-                    <p class="upload-text">Click to upload or drag and drop</p>
-                    <p class="upload-subtext">PNG, JPG, JPEG (MAX. 16MB)</p>
-                </div>
-                <img id="previewImage" class="preview-image" style="display: none;">
+        <div class="upload-box" id="uploadBox">
+            <input type="file" id="fileInput" accept="image/*" hidden>
+            <div id="uploadContent">
+                <p>📤 Click to upload</p>
+                <small>PNG, JPG, JPEG</small>
             </div>
-
-            <button id="recognizeBtn" class="btn btn-primary" disabled>
-                <span id="btnText">Recognize Text</span>
-                <span id="spinner" class="spinner" style="display: none;"></span>
-            </button>
+            <img id="preview" style="display:none; max-width:100%; border-radius:10px;">
         </div>
 
-        <div class="result-section" id="resultSection" style="display: none;">
-            <h2>Recognized Text</h2>
-            <div class="result-box">
-                <div id="resultText" class="result-text"></div>
-                <button id="copyBtn" class="btn btn-secondary">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                    </svg>
-                    Copy
-                </button>
-            </div>
-        </div>
+        <button id="recognizeBtn" disabled>Recognize Text</button>
 
-        <div class="tips-section">
-            <h3>Tips for Best Results</h3>
-            <ul>
-                <li>Use clear, well-lit images</li>
-                <li>Ensure handwriting is legible</li>
-                <li>Avoid blurry or low-resolution images</li>
-                <li>Keep text properly aligned</li>
-            </ul>
+        <div id="result" style="display:none;">
+            <h2>Result:</h2>
+            <div id="resultText"></div>
+            <button id="copyBtn">Copy</button>
         </div>
     </div>
 
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="/static/js/main.js"></script>
 </body>
 </html>
