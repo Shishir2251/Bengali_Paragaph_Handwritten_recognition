@@ -80,13 +80,13 @@ def collect_samples():
                 "text": text
             })
 
-    print(f"🔍 Images scanned: {scanned}")
-    print(f"✅ Valid samples found: {len(samples)}")
+    print(f" Images scanned: {scanned}")
+    print(f" Valid samples found: {len(samples)}")
 
     if not samples:
         raise RuntimeError(
-            "❌ No valid image-json pairs found.\n"
-            "👉 JSON uses shapes[].label (check dataset integrity)."
+            " No valid image-json pairs found.\n"
+            " JSON uses shapes[].label (check dataset integrity)."
         )
 
     return samples
@@ -132,9 +132,9 @@ def main():
         ) as f:
             json.dump(annotations, f, ensure_ascii=False, indent=2)
 
-        print(f"✅ {split}: {len(items)} samples")
+        print(f" {split}: {len(items)} samples")
 
-    print("\n🎉 Dataset preparation completed successfully!")
+    print("\n Dataset preparation completed successfully!")
 
 
 if __name__ == "__main__":

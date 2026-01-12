@@ -18,27 +18,27 @@ def train_model():
     
     # Check if data exists
     if not os.path.exists(Config.TRAIN_DIR):
-        print("❌ Training data not found!")
+        print(" Training data not found!")
         print()
         print("Please run: python download_dataset.py")
         return
     
     # Load data
-    print("📂 Loading data...")
+    print(" Loading data...")
     train_gen = DataGenerator(Config.TRAIN_DIR, Config.BATCH_SIZE, augment=True)
     val_gen = DataGenerator(Config.VAL_DIR, Config.BATCH_SIZE, augment=False)
     
-    print(f"✓ Train samples: {len(train_gen.samples)}")
-    print(f"✓ Val samples: {len(val_gen.samples)}")
+    print(f" Train samples: {len(train_gen.samples)}")
+    print(f" Val samples: {len(val_gen.samples)}")
     print()
     
     if len(train_gen.samples) == 0:
-        print("❌ No training samples found!")
+        print(" No training samples found!")
         print("Check that data/train/annotations.json has entries")
         return
     
     # Build model
-    print("🏗️  Building model...")
+    print("  Building model...")
     training_model, pred_model = build_training_model()
     
     optimizer = tf.keras.optimizers.Adam(Config.LEARNING_RATE)
@@ -78,7 +78,7 @@ def train_model():
     ]
     
     # Train
-    print("🚀 Starting training...")
+    print(" Starting training...")
     print(f"   Epochs: {Config.EPOCHS}")
     print(f"   Batch size: {Config.BATCH_SIZE}")
     print(f"   Learning rate: {Config.LEARNING_RATE}")
@@ -93,10 +93,10 @@ def train_model():
             verbose=1
         )
     except KeyboardInterrupt:
-        print("\n\n⚠️  Training interrupted by user")
+        print("\n\n  Training interrupted by user")
         print("Partial model may be saved")
     except Exception as e:
-        print(f"\n\n❌ Training error: {e}")
+        print(f"\n\n Training error: {e}")
         import traceback
         traceback.print_exc()
         return
@@ -107,14 +107,14 @@ def train_model():
     
     print()
     print("="*70)
-    print("✅ Training complete!")
+    print(" Training complete!")
     print("="*70)
     print()
-    print(f"📁 Model saved:")
+    print(f" Model saved:")
     print(f"   Best: {Config.MODEL_DIR}/{model_name}_best.h5")
     print(f"   Final: {final_path}")
     print()
-    print("🎯 Next steps:")
+    print(" Next steps:")
     print("   - Test: python src/predict.py <model_path> <image_path>")
     print("   - Web App: python app/app.py")
     print()

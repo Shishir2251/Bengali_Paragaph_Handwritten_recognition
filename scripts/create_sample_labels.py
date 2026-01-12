@@ -38,8 +38,8 @@ for split in ['train', 'val', 'test']:
     with open(ann_file, 'w', encoding='utf-8') as f:
         json.dump(annotations, f, ensure_ascii=False, indent=2)
     
-    print(f"✓ Created {split}/annotations.json with {len(annotations)} entries")
+    print(f" Created {split}/annotations.json with {len(annotations)} entries")
 
 print()
-print("⚠️  WARNING: These are DUMMY labels for testing!")
+print("  WARNING: These are DUMMY labels for testing!")
 print("Replace with real labels for actual training.")

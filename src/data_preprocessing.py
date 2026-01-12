@@ -31,7 +31,7 @@ class DataGenerator(tf.keras.utils.Sequence):
         annotation_file = os.path.join(self.data_dir, 'annotations.json')
         
         if not os.path.exists(annotation_file):
-            print(f"❌ Error: {annotation_file} not found!")
+            print(f" Error: {annotation_file} not found!")
             return []
         
         with open(annotation_file, 'r', encoding='utf-8') as f:

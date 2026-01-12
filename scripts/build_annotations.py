@@ -8,7 +8,7 @@ def build_annotations(split):
     labels_dir = os.path.join(DATA_ROOT, split, "labels")
 
     if not os.path.exists(images_dir):
-        raise RuntimeError(f"❌ Missing folder: {images_dir}")
+        raise RuntimeError(f" Missing folder: {images_dir}")
 
     annotations = []
 
@@ -40,7 +40,7 @@ def build_annotations(split):
     with open(out_file, "w", encoding="utf-8") as f:
         json.dump(annotations, f, ensure_ascii=False, indent=2)
 
-    print(f"✅ {split}: {len(annotations)} samples")
+    print(f" {split}: {len(annotations)} samples")
 
 
 if __name__ == "__main__":

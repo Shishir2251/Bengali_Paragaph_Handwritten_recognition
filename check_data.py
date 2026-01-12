@@ -8,17 +8,17 @@ import json
 
 def check_data_structure():
     print("="*70)
-    print("🔍 Checking Your Data Folder")
+    print(" Checking Your Data Folder")
     print("="*70)
     print()
     
     data_dir = Path("data")
     
     if not data_dir.exists():
-        print("❌ 'data' folder not found!")
+        print("'data' folder not found!")
         return
     
-    print(f"✓ Found data folder: {data_dir.absolute()}")
+    print(f"Found data folder: {data_dir.absolute()}")
     print()
     
     # Check each split
@@ -26,7 +26,7 @@ def check_data_structure():
         split_path = data_dir / split
         
         if split_path.exists():
-            print(f"📂 {split}/")
+            print(f" {split}/")
             
             # Count images
             images = list(split_path.glob("*.jpg")) + list(split_path.glob("*.png"))
@@ -37,13 +37,13 @@ def check_data_structure():
             if ann_file.exists():
                 with open(ann_file, 'r', encoding='utf-8') as f:
                     anns = json.load(f)
-                print(f"   ✓ annotations.json: {len(anns)} entries")
+                print(f" annotations.json: {len(anns)} entries")
             else:
-                print(f"   ❌ annotations.json NOT FOUND")
+                print(f"  annotations.json NOT FOUND")
             
             print()
         else:
-            print(f"❌ {split}/ folder not found")
+            print(f" {split}/ folder not found")
             print()
     
     print("="*70)
@@ -56,14 +56,14 @@ def check_data_structure():
             ready = False
     
     if ready:
-        print("✅ Your dataset is READY for training!")
+        print(" Your dataset is READY for training!")
         print()
-        print("🚀 Next step:")
+        print(" Next step:")
         print("   python src/train.py")
     else:
-        print("⚠️  You need to create annotations.json files")
+        print("  You need to create annotations.json files")
         print()
-        print("📝 Choose one option:")
+        print(" Choose one option:")
         print()
         print("Option A: If you have labels in separate JSON files:")
         print("   1. Put them in data/train/labels/, data/val/labels/")
